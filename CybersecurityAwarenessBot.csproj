@@ -11,10 +11,22 @@
 
   <ItemGroup>
     <Compile Remove="Tests/**/*.cs" />
+    <EmbeddedResource Remove="UI\MainForm.Part3.resx" />
 
     <Content Include="Media/greeting.wav">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
 
+  <ItemGroup>
+    <None Include="UI\MainForm.Part3.resx" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="MySqlConnector" Version="3.0.0" />
+  </ItemGroup>
+	<ItemGroup>
+		<EmbeddedResource Remove="UI\MainForm.resx" />
+		<EmbeddedResource Remove="UI\MainForm.Part3.resx" />
+	</ItemGroup>
 </Project>

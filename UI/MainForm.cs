@@ -9,7 +9,7 @@ using CybersecurityAwarenessBot.Services;
 namespace CybersecurityAwarenessBot.UI
 {
     // Builds the interface in code, so no Designer file is needed.
-    public sealed class MainForm : Form
+    public sealed partial class MainForm : Form
     {
         private ChatbotService chatbot = new ChatbotService();
         private User user = new User();
@@ -42,6 +42,7 @@ namespace CybersecurityAwarenessBot.UI
             AutoScaleMode = AutoScaleMode.Dpi;
 
             BuildInterface();
+            
 
             AddMessage(
                 "Assistant",
@@ -93,6 +94,18 @@ namespace CybersecurityAwarenessBot.UI
                 BackColor = navy,
                 Padding = new Padding(16)
             };
+
+            Button taskButton = MakeButton("MY TASKS", 220);
+            taskButton.Click += (_, _) => OpenPart3Tasks();
+            sidebar.Controls.Add(taskButton);
+
+            Button quizButton = MakeButton("CYBERSECURITY QUIZ", 220);
+            quizButton.Click += (_, _) => OpenPart3Quiz();
+            sidebar.Controls.Add(quizButton);
+
+            Button activityButton = MakeButton("ACTIVITY LOG", 220);
+            activityButton.Click += (_, _) => OpenPart3Activity();
+            sidebar.Controls.Add(activityButton);
 
             sidebar.Controls.Add(new Label
             {
@@ -408,7 +421,7 @@ namespace CybersecurityAwarenessBot.UI
             input.Focus();
         }
 
-        private void Send(string message)
+        private async void Send(string message)
         {
             if (!started)
             {
@@ -430,7 +443,8 @@ namespace CybersecurityAwarenessBot.UI
 
             AddMessage(user.Name, message.Trim());
 
-            string response = chatbot.GetResponse(message, user);
+            string response = await HandlePart3Message(message)
+    ?? chatbot.GetResponse(message, user);
 
             AddMessage("Assistant", response);
 
