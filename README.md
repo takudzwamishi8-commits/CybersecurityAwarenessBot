@@ -1,4 +1,4 @@
-# Cybersecurity Awareness Bot � Part 2
+# Cybersecurity Awareness Bot — Part 2
 
 ## Project overview
 
@@ -141,3 +141,23 @@ Video link: TO BE ADDED AFTER RECORDING
 
 The presentation will demonstrate the running application and
 explain its code structure, logic, collections, and delegate.
+## Part 3 — Final POE
+
+This project extends the existing Cybersecurity Awareness Chatbot.
+
+### New Features
+- Task Assistant with MySQL database
+- Cybersecurity task reminders
+- 12-question Cybersecurity Quiz
+- Natural Language Processing simulation
+- Activity Log
+- Integration with Parts 1 and 2
+
+### How to Run
+1. Open the project in Visual Studio.
+2. Ensure MySQL Server is running.
+3. Configure the CYBERBOT_MYSQL connection.
+4. Build and run the application.
+
+### Video Presentation
+Video link: To be added.
